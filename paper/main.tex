@@ -1,33 +1,18 @@
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{newtxtext,newtxmath,microtype}
-\usepackage{amsmath,amssymb,graphicx,booktabs,siunitx,array}
-\usepackage{lineno,setspace,natbib}
-\usepackage[hidelinks]{hyperref}
-\linenumbers
-\onehalfspacing
-
-\title{\textbf{Quantifying Pacing Regulation in Marathon Running: A Field-Derived Functional and Its Information Horizon}}
-\author{Author details to be completed}
-\date{}
-
+% Springer Nature journal article template, Version 3.1 (December 2024)
+\documentclass[pdflatex,sn-basic]{sn-jnl}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\raggedbottom
 \begin{document}
+\title[Quantifying pacing regulation in marathon running]{Quantifying Pacing Regulation in Marathon Running: A Field-Derived Functional and Its Information Horizon}
+% Confirm final author list, corresponding e-mail, ORCID and postal details before submission.
+\author*[1]{\fnm{Andy Rafael} \sur{Domínguez}}
+\affil*[1]{\orgdiv{Department of Mathematics}, \orgname{Pontificia Universidad Javeriana}, \orgaddress{\city{Bogotá}, \country{Colombia}}}
+\abstract{\textbf{Purpose:} Routine marathon split times provide repeated field observations of pacing, but common metrics compress the trajectory into global variability or ratios. We developed an order-sensitive functional of local pacing regulation and identified the earliest race distance at which it contained reproducible information about subsequent late-race performance. \textbf{Methods:} We analyzed 5-km splits from 551,337 finishers of the Berlin, Boston, Chicago, and New York City Marathons across 16 race-year cohorts. Horizon-specific pacing regulation cost (APRC) was the mean squared change between successive normalized segment velocities observed through 15, 20, or 25 km. Models adjusted for early velocity, age, sex, marathon, and year. Validation included race-year replication, performance strata, comparison with coefficient of variation (CV), and a confirmatory outcome using absolute 30--40-km velocity conditional on early velocity. \textbf{Results:} APRC added negligible information at 15 km ($\Delta R^2=0.00018$). At 20 km, the association was negative in all 16 cohorts ($\beta=-0.00977$; $\Delta R^2=0.00939$) and strengthened at 25 km ($\beta=-0.02575$; $\Delta R^2=0.06288$). APRC also added information beyond CV. With the de-coupled outcome, incremental information was essentially absent at 15 km but again emerged at 20 km and strengthened at 25 km, with negative associations in all 16 cohorts at both horizons. \textbf{Conclusion:} A transparent quadratic functional derived from routine split times captured ordered local pacing structure. A reproducible information signal emerged by approximately 20 km and strengthened by 25 km. This information horizon is an empirical property of the measured pacing signal, not a universal physiological threshold.}
+\keywords{marathon running, pacing, endurance performance, fatigue resistance, field methods, real-world data}
 \maketitle
-
-\begin{abstract}
-\textbf{Purpose} Marathon split times are routinely collected under ecologically valid conditions, yet most pacing metrics compress the trajectory into global variability, categorical profiles, or early-to-late ratios. We developed an order-sensitive functional of local pacing regulation and determined the earliest race distance at which the observed trajectory contains reproducible information about subsequent late-race capacity preservation.
-
-\textbf{Methods} We analyzed 5-km split records from 551,337 finishers of the Berlin, Boston, Chicago, and New York City Marathons across 16 race-year cohorts. Segment velocity was normalized to an early-race reference velocity. Horizon-specific pacing regulation cost (APRC) was defined as the mean squared change between successive normalized segment velocities observed through 15, 20, or 25 km. The primary outcome was late-race capacity preservation over 30--40 km relative to early-race velocity. Models adjusted for early-race velocity, age, sex, marathon, and year. Validation included race-year replication, performance strata, spatial progression, comparison with coefficient of variation (CV), and a confirmatory analysis replacing the ratio outcome with absolute late-race velocity conditional on early velocity.
-
-\textbf{Results} At 15 km, APRC added negligible information about subsequent capacity preservation ($\Delta R^2=0.00018$) and was negative in 11/16 cohorts. At 20 km, the association was negative in all 16 cohorts (standardized $\beta=-0.00977$, 95\% CI $-0.01032$ to $-0.00922$; $\Delta R^2=0.00939$), and strengthened at 25 km ($\beta=-0.02575$, 95\% CI $-0.02663$ to $-0.02487$; $\Delta R^2=0.06288$). APRC added information beyond CV at 20 km ($\Delta R^2=0.02771$) and 25 km ($0.04294$). The estimated information horizon was unchanged when the outcome was absolute 30--40-km velocity conditional on early velocity: essentially no incremental information was present at 15 km ($\Delta R^2=0.00001$), whereas associations were negative in 16/16 cohorts at 20 km ($\beta=-0.05014$, $\Delta R^2=0.00227$) and 25 km ($\beta=-0.12279$, $\Delta R^2=0.01311$).
-
-\textbf{Conclusion} A transparent quadratic functional derived from routine split times captured the ordered local structure of marathon pacing. Across four major marathons, a reproducible information signal about subsequent late-race performance emerged by approximately 20 km and strengthened markedly by 25 km. This information horizon is an empirical property of the observed pacing signal, not a universal physiological threshold.
-\end{abstract}
-
-\noindent\textbf{Keywords:} marathon running; pacing; endurance performance; fatigue resistance; field methods; real-world data
-
 \section*{Abbreviations}
 APRC, horizon-specific pacing regulation cost; CI, confidence interval; CV, coefficient of variation; LCP, late-race capacity preservation; PRC, pacing regulation cost.
 
@@ -35,9 +20,9 @@ APRC, horizon-specific pacing regulation cost; CI, confidence interval; CV, coef
 
 Pacing is the continuously evolving regulation of work rate across a finite exercise task. In marathon running, the realized velocity trajectory reflects the interaction of sustainable metabolic intensity, substrate availability, neuromuscular function, thermoregulatory strain, perception of effort, terrain, environmental conditions, tactical decisions, and the athlete's expectation of what can be sustained \citep{Abbiss2008,Renfree2018,Azevedo2021}. Because official timing mats repeatedly sample this trajectory under authentic competitive conditions, marathon races provide an unusual field setting in which a performance signal can be studied at population scale without adding instrumentation.
 
-The methodological challenge is that most commonly used pacing descriptors discard much of this signal. Marathon pacing has traditionally been represented by positive, even, or negative profiles, early-to-late percentage changes, pace range, or the coefficient of variation (CV) of split velocity \citep{Sha2024,Ristanovic2026}. These measures have established robust population-level regularities. Faster runners generally exhibit more stable pacing, whereas larger fluctuations and stronger late-race slowing are more common at slower performance levels \citep{Sha2024,Ristanovic2026,Dong2026}. Sex- and age-associated differences have also been reported, although their interpretation is sensitive to performance level, race context, data quality, and analytical choices \citep{Cuk2020,Tenan2025}. Recent methodological criticism of real-world marathon analyses has specifically emphasized raw-data quality control, the limitations of ratio-based outcomes, and the danger of assigning biological mechanisms to statistical patterns without adequate validation \citep{Tenan2025}.
+The methodological challenge is that most commonly used pacing descriptors discard much of this signal. Marathon pacing has traditionally been represented by positive, even, or negative profiles, early-to-late percentage changes, pace range, or the coefficient of variation (CV) of split velocity \citep{Sha2024}. These measures have established robust population-level regularities. Faster runners generally exhibit more stable pacing, whereas larger fluctuations and stronger late-race slowing are more common at slower performance levels \citep{Sha2024,Ristanovic2026,Dong2026}. Sex- and age-associated differences have also been reported, although their interpretation is sensitive to performance level, race context, data quality, and analytical choices . Recent methodological criticism of real-world marathon analyses has specifically emphasized raw-data quality control, the limitations of ratio-based outcomes, and the danger of assigning biological mechanisms to statistical patterns without adequate validation .
 
-A parallel literature has moved toward richer representations of the endurance-performance signal. Recent work provides two particularly close methodological precedents: serial-dependence tracking of mile-by-mile pacing in the New York City Marathon \citep{Thuany2025}, and cross-edition analyses showing reproducible but course-specific pacing profiles \citep{Oficial2021,Oficial2022}. Large-scale studies have formalized late-race ``hitting the wall'' using split-derived deterioration rules \citep{Smyth2021,Doherty2020}; inertial-sensor studies have identified biomechanical changes preceding substantial pace reduction \citep{Meyer2021,Miyazaki2025}; and critical-speed and power-duration approaches provide physiological reference frames for sustainable intensity and durability \citep{SmythMuniz2020,Drake2024,WahlJi2026}. These approaches converge on an important idea: the \emph{organization} of performance across distance may contain information that is lost when the race is compressed into one global summary.
+A parallel literature has moved toward richer representations of the endurance-performance signal. Recent work provides two particularly close methodological precedents: serial-dependence tracking of mile-by-mile pacing in the New York City Marathon \citep{Thuany2025}, and cross-edition analyses showing reproducible but course-specific pacing profiles \citep{Oficial2021,Oficial2022}. Large-scale studies have formalized late-race ``hitting the wall'' using split-derived deterioration rules \citep{Doherty2020}; inertial-sensor studies have identified biomechanical changes preceding substantial pace reduction \citep{Meyer2021,Miyazaki2025}; and critical-speed and power-duration approaches provide physiological reference frames for sustainable intensity and durability \citep{SmythMuniz2020,Drake2024,WahlJi2026}. These approaches converge on an important idea: the \emph{organization} of performance across distance may contain information that is lost when the race is compressed into one global summary.
 
 This issue is especially relevant to method development. The \emph{Methods in Applied Physiology} initiative has argued for high-quality records, physiology-based interpretation, and transparent assessment rather than analytical complexity for its own sake \citep{Westerblad2025}. Recent work in the European Journal of Applied Physiology illustrates how mathematical models can transform routinely obtainable performance observations into interpretable physiological or performance assessments, while making their assumptions explicit \citep{Drake2024,Briand2025,WahlJi2026}. Existing field approaches therefore quantify global dispersion, classify pacing profiles, track serial dependence, or identify deterioration once it develops; early-warning studies additionally use training-derived critical speed or biomechanical signals. To our knowledge, no previous split-time approach has defined an order-sensitive local regulation functional and used its progressive observation to determine a reproducible information horizon for subsequent marathon performance.
 
@@ -77,6 +62,11 @@ For observation horizon $x$,
 where $m(x)$ is the number of segment-to-segment transitions observed through $x$. Primary horizons were 15, 20, and 25 km. Thus, $\mathcal{R}_i(15)$ contains the 10--15-km transition; $\mathcal{R}_i(20)$ additionally contains the 15--20-km transition; and $\mathcal{R}_i(25)$ additionally contains the 20--25-km transition. We refer to $\mathcal{R}_i(x)$ as horizon-specific pacing regulation cost (APRC).
 
 Squaring makes every local contribution non-negative and gives greater weight to larger adjacent changes. Averaging permits comparison across horizons containing different numbers of transitions. At a fixed horizon, APRC is proportional to the corresponding discrete sum of squared gradients. It is a trajectory-roughness functional and has no units of physiological energy.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.92\textwidth]{figures/Fig1_conceptual_framework.pdf}
+\caption{\textbf{Conceptual framework for the horizon-specific pacing regulation functional.} Official 5-km timing observations are transformed into segment velocities, normalized to each runner's early-race reference velocity, and converted to local squared adjacent changes. The schematic trajectory is illustrative rather than an individual participant record.}\label{fig:concept}
+\end{figure}
 
 \subsection{Primary outcome: late-race capacity preservation}
 Late-race capacity preservation was defined as
@@ -123,10 +113,18 @@ The study used secondary publicly available race-result data and involved no par
 \subsection{Analytical cohort and spatial progression of regulation cost}
 The quality-control pipeline retained 551,337 of 570,843 records (96.6\%) across four marathons and 16 race-year cohorts. PRC increased with race progression. Mean values were 0.00186 over 10--20 km, 0.00328 over 20--30 km, and 0.00381 over 30--40 km; corresponding medians were 0.00045, 0.00127, and 0.00169. Median late-race PRC was therefore approximately 3.75 times the early-race value (Fig.~\ref{fig:spatial}).
 
+\begin{figure}[ht]\centering
+\includegraphics[width=0.88\textwidth]{figures/Fig4_spatial_progression.pdf}
+\caption{\textbf{Spatial progression of pacing regulation cost across the marathon.} Medians and interquartile ranges summarize the skewed PRC distributions over 10--20, 20--30, and 30--40 km; means are shown as complementary summaries. PRC increased progressively across race regions.}\label{fig:spatial}\end{figure}
+
 \subsection{The pacing trajectory became reproducibly informative by approximately 20 km}
 At 15 km, APRC showed a statistically resolved but practically small association with subsequent LCP (standardized $\beta=-0.00131$, 95\% CI $-0.00164$ to $-0.00098$), adding only $\Delta R^2=0.00018$. Eleven of 16 race-year cohorts (68.8\%) had negative coefficients. Thus, pooled statistical detectability preceded reproducibility.
 
-At 20 km, the pattern changed: $\beta=-0.00977$ (95\% CI $-0.01032$ to $-0.00922$), $\Delta R^2=0.00939$, and all 16 race-year cohorts had negative coefficients. At 25 km, the association strengthened to $\beta=-0.02575$ (95\% CI $-0.02663$ to $-0.02487$), with $\Delta R^2=0.06288$ and 16/16 directionally concordant cohorts (Fig.~\ref{fig:horizon}). The operational information horizon was therefore 20 km.
+At 20 km, the pattern changed: $\beta=-0.00977$ (95\% CI $-0.01032$ to $-0.00922$), $\Delta R^2=0.00939$, and all 16 race-year cohorts had negative coefficients. At 25 km, the association strengthened to $\beta=-0.02575$ (95\% CI $-0.02663$ to $-0.02487$), with $\Delta R^2=0.06288$ and 16/16 directionally concordant cohorts (Fig.~\ref{fig:horizon}).
+
+\begin{figure}[ht]\centering
+\includegraphics[width=\textwidth]{figures/Fig2_information_horizon.pdf}
+\caption{\textbf{Emergence of information about subsequent late-race capacity preservation.} (a) Incremental $R^2$ contributed by APRC at 15, 20, and 25 km. The dotted horizontal line marks the operational $\Delta R^2=0.005$ screening criterion. (b) Corresponding standardized APRC coefficients with 95\% confidence intervals. The full operational information criterion was first met at 20 km.}\label{fig:horizon}\end{figure} The operational information horizon was therefore 20 km.
 
 The 30-km boundary analysis yielded a larger association ($\beta=-0.03494$, 95\% CI $-0.03615$ to $-0.03372$; $\Delta R^2=0.11752$), but because the horizon directly abutted the 30--40-km outcome window it was not used to define information onset.
 
@@ -146,17 +144,33 @@ Horizon (km) & Standardized $\beta$ & 95\% CI & $\Delta R^2$ & Negative cohorts 
 \end{table}
 
 \subsection{Replication across races, years, and performance strata}
-At 15 km, race-year coefficients ranged from $-0.00512$ to $+0.00501$ (median $-0.00269$). At 20 km, all 16 estimates were negative (median $-0.01043$; range $-0.01478$ to $-0.00291$). At 25 km, all remained negative and increased in magnitude (median $-0.02340$; range $-0.03472$ to $-0.01328$) (Fig.~\ref{fig:replication}). Seven cohorts already had confidence intervals below zero at 15 km; the remaining nine reached this criterion by 20 km.
+At 15 km, race-year coefficients ranged from $-0.00512$ to $+0.00501$ (median $-0.00269$). At 20 km, all 16 estimates were negative (median $-0.01043$; range $-0.01478$ to $-0.00291$). At 25 km, all remained negative and increased in magnitude (median $-0.02340$; range $-0.03472$ to $-0.01328$) (Fig.~\ref{fig:replication}).
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.96\textwidth]{figures/Fig3_city_year_replication.pdf}
+\caption{\textbf{Race-year replication at 20 and 25 km.} Standardized APRC coefficients and 95\% confidence intervals are shown for 16 marathon-year cohorts. Negative values indicate that greater pacing-regulation cost was associated with poorer subsequent late-race capacity preservation. All cohort estimates were negative at both horizons.}\label{fig:replication}\end{figure} Seven cohorts already had confidence intervals below zero at 15 km; the remaining nine reached this criterion by 20 km.
 
 The horizon-dependent pattern also persisted across performance quartiles. In the fastest quartile, $\Delta R^2$ increased from 0.00126 at 15 km to 0.00897 at 20 km and 0.05493 at 25 km; standardized coefficients were $-0.00261$, $-0.00700$, and $-0.01763$. At 25 km, coefficients remained negative in all four performance strata (Fig.~\ref{fig:strata}).
 
+\begin{figure}[ht]\centering
+\includegraphics[width=0.88\textwidth]{figures/Fig5_performance_strata.pdf}
+\caption{\textbf{Information-horizon profiles across performance strata.} Incremental $R^2$ for APRC at 15, 20, and 25 km is shown by performance quartile. The horizon-dependent increase persisted across strata; APRC coefficients at 25 km were negative in all four groups.}\label{fig:strata}\end{figure}
+
 \subsection{APRC contained information beyond conventional pacing variability}
 APRC and same-horizon CV were strongly correlated ($r=0.81$, 0.83, and 0.82 at 15, 20, and 25 km, respectively), confirming that both measure aspects of pacing variability. Nevertheless, adding APRC to a model already containing CV increased $R^2$ by 0.00272 at 15 km, 0.02771 at 20 km, and 0.04294 at 25 km. Thus, the ordered local functional contained explanatory information not captured by global dispersion alone. Conditional coefficient signs were not interpreted because of collinearity.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=0.82\textwidth]{figures/FigS1_APRC_beyond_CV.pdf}
+\caption{\textbf{Supplementary Fig. S1. Incremental information from APRC beyond same-horizon coefficient of variation.} Increase in model $R^2$ after adding APRC to a model already containing same-horizon CV. APRC and CV were strongly correlated; this analysis evaluates incremental information rather than interpreting mutually adjusted coefficient signs as distinct physiological effects.}\label{fig:cv}\end{figure}
 
 \subsection{The information horizon survived removal of the ratio outcome}
 The confirmatory outcome de-coupling analysis produced a sharper separation between the pre-information and information-bearing horizons (Table~\ref{tab:decouple}). The baseline model for absolute 30--40-km velocity already explained $R^2=0.80579$ after adjustment for early velocity and covariates. At 15 km, APRC added essentially no information ($\Delta R^2=0.000011$); the pooled coefficient was small and positive ($\beta=0.00335$, 95\% CI 0.00209 to 0.00460), only 8/16 cohorts were negative, and only 3/16 had confidence intervals entirely below zero.
 
 At 20 km, APRC was negative in all 16 cohorts ($\beta=-0.05014$, 95\% CI $-0.05302$ to $-0.04725$; $\Delta R^2=0.002267$), with all 16 confidence intervals below zero. At 25 km, the association strengthened ($\beta=-0.12279$, 95\% CI $-0.12698$ to $-0.11860$; $\Delta R^2=0.013113$), again with 16/16 negative cohort estimates and 16/16 confidence intervals below zero. All five confirmatory criteria were satisfied. The classification of the information horizon at approximately 20 km was therefore unchanged when late-race performance was represented without an early-to-late ratio.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=\textwidth]{figures/Fig6_decoupled_confirmation.pdf}
+\caption{\textbf{Confirmatory outcome de-coupling analysis.} Absolute mean 30--40-km velocity was modeled while conditioning on early-race velocity. (a) Incremental $R^2$ at 15, 20, and 25 km; the baseline model explained $R^2=0.80579$. (b) Standardized APRC coefficients with 95\% confidence intervals. Incremental information was essentially absent at 15 km, emerged reproducibly at 20 km, and strengthened at 25 km.}\label{fig:decouple}\end{figure}
 
 \begin{table}[ht]
 \centering
@@ -178,7 +192,7 @@ Horizon (km) & Standardized $\beta$ & 95\% CI & $\Delta R^2$ & Negative cohorts 
 This study developed and validated an order-sensitive functional of marathon pacing using only routine 5-km timing observations. The main finding was not simply that irregular pacing was associated with poorer late-race performance. Rather, the \emph{information carried by the evolving trajectory had a reproducible spatial onset}: little stable information was present at 15 km, a directionally consistent signal emerged across all 16 race-year cohorts by approximately 20 km, and the signal strengthened markedly by 25 km. This pattern survived performance stratification, comparison with conventional CV, and, critically, removal of the early-to-late ratio from the outcome. The latter result makes a purely algebraic explanation of the information horizon unlikely.
 
 \subsection{From global pacing summaries to ordered local regulation}
-The contemporary marathon literature increasingly treats pacing as a dynamic signal rather than a single half-race ratio \citep{Sha2024,Ristanovic2026}. CV, pace range, clustering, autocorrelation, and wall-detection rules have each expanded the description of race dynamics \citep{Smyth2021,Dong2026}. APRC addresses a narrower methodological gap: it preserves \emph{adjacency}. Two trajectories can contain the same set of segment velocities and therefore the same mean and CV, yet have different APRC values if those velocities occur in a different order. The measure therefore asks how rapidly the normalized operating state changes from one observed segment to the next.
+The contemporary marathon literature increasingly treats pacing as a dynamic signal rather than a single half-race ratio \citep{Sha2024}. CV, pace range, clustering, autocorrelation, and wall-detection rules have each expanded the description of race dynamics \citep{Doherty2020,Dong2026}. APRC addresses a narrower methodological gap: it preserves \emph{adjacency}. Two trajectories can contain the same set of segment velocities and therefore the same mean and CV, yet have different APRC values if those velocities occur in a different order. The measure therefore asks how rapidly the normalized operating state changes from one observed segment to the next.
 
 The closest existing approaches occupy complementary measurement levels. Autocorrelation-based tracking preserves serial dependence in official split data \citep{Thuany2025}; critical-speed analysis anchors early intensity to an independently estimated physiological performance boundary \citep{SmythMuniz2020}; and functional analysis of IMU signals extracts early biomechanical signatures of subsequent severe slowing \citep{Miyazaki2025}. APRC differs in requiring only routine timing-mat observations while explicitly preserving adjacent split order and evaluating how information about a future, spatially separated outcome develops with race distance. Supplementary Table~S1 maps these methodological precedents.
 
@@ -197,7 +211,7 @@ Critical-speed and power-duration models provide a mechanistic framework for the
 APRC is complementary rather than competing. It does not estimate an athlete's critical speed, physiological reserve, or metabolic power. Instead, it extracts an ordered structural property from the realized field trajectory. This distinction is necessary because converting velocity into metabolic power requires assumptions about running cost and, particularly during acceleration or changing terrain, additional mechanical and energetic terms \citep{Briand2025}. The current 5-km observations cannot support such reconstruction. A future validation study combining APRC with independently measured critical speed, running economy, physiological durability, or wearable-derived mechanics would therefore be more informative than retrospectively assigning a metabolic meaning to the present functional.
 
 \subsection{Why outcome de-coupling matters}
-Ratio-based metrics are common in marathon research because they offer intuitive normalization, but ratios can induce mathematical coupling and obscure whether an association arises from the numerator, denominator, or both \citep{Tenan2025}. This concern was especially relevant here because primary LCP contains early velocity in its denominator and APRC is normalized by early reference velocity.
+Ratio-based metrics are common in marathon research because they offer intuitive normalization, but ratios can induce mathematical coupling and obscure whether an association arises from the numerator, denominator, or both . This concern was especially relevant here because primary LCP contains early velocity in its denominator and APRC is normalized by early reference velocity.
 
 The confirmatory analysis deliberately removed that dependency from the outcome. Absolute late-race velocity was modeled while conditioning explicitly on early velocity. The baseline already explained more than 80\% of its variance, leaving comparatively little residual information to recover. Even under this stringent specification, the spatial pattern remained: effectively no incremental information at 15 km, a replicated negative signal at 20 km, and a stronger signal at 25 km. The information-horizon classification was therefore robust to whether subsequent performance was represented relatively or absolutely.
 
@@ -207,7 +221,7 @@ The method requires no additional sensor, laboratory visit, or proprietary algor
 The approach also aligns with a central principle of methods research: a useful derived metric should be transparent enough that its assumptions and failure modes remain visible \citep{Westerblad2025}. APRC has only three essential operations---normalization, adjacent differencing, and squaring. Its simplicity facilitates replication across datasets and makes it possible to distinguish mathematical behavior from physiological interpretation.
 
 \subsection{Performance level and demographic variables}
-Performance level is the most consistent correlate of marathon pacing in contemporary reviews: faster runners generally display smaller variability and less late-race deterioration \citep{Sha2024,Ristanovic2026}. Sex differences are also frequently reported, whereas age effects are smaller or less consistent. However, recent reanalysis has shown that demographic conclusions from real-world marathon data can be sensitive to data quality, model specification, and performance interactions \citep{Tenan2025}. We therefore treated sex and age as adjustment variables rather than mechanistic endpoints.
+Performance level is the most consistent correlate of marathon pacing in contemporary reviews: faster runners generally display smaller variability and less late-race deterioration \citep{Sha2024}. Sex differences are also frequently reported, whereas age effects are smaller or less consistent. However, recent reanalysis has shown that demographic conclusions from real-world marathon data can be sensitive to data quality, model specification, and performance interactions . We therefore treated sex and age as adjustment variables rather than mechanistic endpoints.
 
 More relevant to the present validation is that the 25-km APRC association remained negative across all performance quartiles. The proposed functional therefore did not derive its information solely from contrasting very fast with very slow runners. Future studies should test whether within-athlete physiological characteristics explain variation in APRC among runners operating at similar relative intensity.
 
@@ -222,55 +236,25 @@ The next validation step should be physiological rather than statistical elabora
 \section{Conclusion}
 Routine marathon split times contain an ordered component of pacing regulation that is not captured completely by global variability. A simple quadratic functional of successive normalized velocity changes provided a transparent field-derived measure of that structure. Across 551,337 runners and 16 marathon-year cohorts, the trajectory contained essentially no reproducible information about subsequent late-race performance at 15 km, a consistent signal emerged by approximately 20 km, and information strengthened markedly by 25 km. The same horizon was recovered when subsequent performance was expressed as absolute late-race velocity conditional on early velocity, addressing a key ratio-coupling concern. The proposed information horizon is not a physiological threshold; it is a reproducible property of the measured pacing trajectory and a testable target for future physiological validation.
 
-\section*{Figure captions}
-
-\textbf{Figure 1. Conceptual framework for the horizon-specific pacing regulation functional.}
-Official 5-km timing observations are transformed into segment velocities, normalized to each runner's early-race reference velocity, and converted to local squared adjacent changes. The horizon-specific pacing regulation cost $\mathcal R(x)$ averages these contributions through a specified race distance. The schematic trajectory is illustrative rather than an individual participant record. Short labels, panel identifiers, mathematical notation, and legends may remain embedded within the artwork; this caption provides the full scientific interpretation.
-
-\textbf{Figure 2. Emergence of information about subsequent late-race capacity preservation across observation horizons.}
-Panel a shows incremental $R^2$ contributed by APRC at 15, 20, and 25 km; panel b shows the corresponding standardized APRC coefficients with 95\% confidence intervals. The dotted horizontal line in panel a marks the prespecified $\Delta R^2=0.005$ screening criterion, and the vertical reference identifies 20 km, the first primary horizon at which the full operational criterion was met. The 30-km boundary analysis is excluded because it directly abuts the 30--40-km outcome window.
-
-\textbf{Figure 3. Race-year replication of the APRC association at 20 and 25 km.}
-Standardized regression coefficients and 95\% confidence intervals are shown separately for 16 marathon-year cohorts. Negative values indicate that greater pacing-regulation cost was associated with poorer subsequent late-race capacity preservation. All cohort estimates were negative at both 20 and 25 km.
-
-\textbf{Figure 4. Spatial progression of pacing regulation cost across the marathon.}
-Distribution summaries of PRC over 10--20, 20--30, and 30--40 km. Medians and interquartile ranges describe the skewed distributions; means are shown as complementary summaries. PRC increased progressively across race regions.
-
-\textbf{Figure 5. Information-horizon profiles across performance strata.}
-Incremental $R^2$ for APRC at 15, 20, and 25 km is shown by performance quartile. The horizon-dependent increase was present across strata, and the APRC coefficient at 25 km was negative in all four groups.
-
-\textbf{Figure 6. Confirmatory outcome de-coupling analysis.}
-Confirmatory analysis using absolute mean 30--40-km velocity as the outcome while conditioning on early-race velocity. Panel a shows incremental $R^2$ at 15, 20, and 25 km; the baseline model explained $R^2=0.80579$. Panel b shows standardized APRC coefficients with 95\% confidence intervals. Incremental information was essentially absent at 15 km, emerged reproducibly at 20 km, and strengthened at 25 km; all 16 race-year cohort estimates were negative at both 20 and 25 km.
-
-\textbf{Supplementary Figure S1. Incremental information from APRC beyond same-horizon coefficient of variation.}
-Increase in model $R^2$ after adding APRC to a model already containing same-horizon CV. APRC and CV were strongly correlated; therefore, this analysis evaluates incremental information rather than interpreting mutually adjusted coefficient signs as distinct physiological effects.
 
 \section*{Declarations}
-
 \subsection*{Funding}
-[Insert final funding statement.]
-
+No external funding was received for this study. % VERIFY BEFORE SUBMISSION
 \subsection*{Competing interests}
-The authors declare no competing interests.
-
+The author declares no competing interests.
 \subsection*{Author contributions}
-[Insert final CRediT-style contribution statement.]
-
+A.R.D. conceived the study, developed the methodology, performed the analyses, interpreted the results, prepared the visualizations, and drafted and revised the manuscript. % VERIFY FINAL AUTHOR LIST/CRediT
 \subsection*{Ethics approval}
-[Insert the formal institutional determination regarding secondary analysis of publicly available race-result data.]
-
+This study used secondary publicly available race-result data and involved no participant contact or intervention. Identifiable names were not used for inference and are not redistributed. The formal institutional determination regarding ethics review or exemption must be confirmed before submission.
 \subsection*{Consent to participate}
-[Complete after the institutional ethics determination.]
-
+Not applicable, subject to the final institutional ethics determination.
+\subsection*{Consent for publication}
+Not applicable.
 \subsection*{Data availability}
-Analysis code, frozen aggregate statistical outputs, and publication figures will be available in the project repository and archived with a persistent identifier. Individual-level race records are not redistributed. Source-data provenance and acquisition procedures are documented in the repository.
-
+Analysis code, frozen aggregate statistical outputs, and publication-figure workflows are maintained in the project repository. Individual-level race records are not redistributed. Source-data provenance and acquisition procedures are documented in the repository.
 \subsection*{Code availability}
-All analysis and figure-generation notebooks required to reproduce the reported aggregate results are maintained in the project repository.
-
+Analysis and figure-generation notebooks required to reproduce the reported aggregate results are maintained in the project repository.
 \subsection*{Use of generative artificial intelligence}
-Generative artificial intelligence was used during manuscript drafting and language refinement. All study-design decisions, analyses, verification of numerical results, interpretation, literature selection, and final text are the responsibility of the authors. This statement will be aligned with the publisher policy in force at submission.
-
-\bibliographystyle{spbasic}
+Generative artificial intelligence was used during manuscript drafting and language refinement. All study-design decisions, analyses, numerical verification, interpretation, literature selection, and final text are the responsibility of the author. The wording of this disclosure should be checked against the publisher policy in force on the submission date.
 \bibliography{references}
 \end{document}
