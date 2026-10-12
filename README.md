@@ -20,11 +20,16 @@ The *operational information horizon* of 20 km applies to the **primary ratio ou
 
 - `data/processed_results/`: frozen aggregate outputs for horizon models, race-year replication, performance quartiles, spatial progression, CV comparison and absolute-velocity sensitivity analysis.
 - `notebooks/04_final_EJAP_figures.ipynb`: figure-generation notebook built from frozen summary statistics (partly embedded in the notebook). It does **not** rerun QC or regression analyses from raw race records.
+- `notebooks/05_temporal_normalization_validation.ipynb`: **new executable validation protocol** that loads individual-level records (user-supplied harmonized file or three referenced source CSVs plus Berlin), reruns QC, attempts to reproduce frozen original model estimates, and **only if the numerical reproduction gate passes** compares retrospective and horizon-available 15-km normalization. Requires access to the original race records; **no validation result has been generated or certified yet**.
 - `data/README.md`: source-data locations, data schema, QC filters, and provenance limitations.
 - `AUDIT.md`: claim-to-evidence crosswalk and outstanding validation tasks.
 - `requirements.txt`: Python environment dependencies.
 
 Manuscript and supplementary LaTeX source are maintained **outside** this analysis repository.
+
+## Temporal-normalization experiment
+
+Open [notebook 05 in Colab](https://colab.research.google.com/github/ardominguezm/marathon-pacing-regulation/blob/main/notebooks/05_temporal_normalization_validation.ipynb) (GitHub authorization may be required for this private repository). Set `HARMONIZED_CSV` to a Drive file containing the complete original participant-level data; alternatively set `BERLIN_CSV` to the Berlin source and the notebook will load the three documented third-party city CSVs. Set `USE_DRIVE=True` if using Google Drive. Run cells in order. If the input/QC or original-regression reproduction gate fails, **stop and investigate rather than interpreting any new estimate**. Save aggregate outputs (not participant records) from `data/validation_temporal/` after successful execution. The experiment has not been run against the full dataset in this repository.
 
 ## Figure workflow
 
