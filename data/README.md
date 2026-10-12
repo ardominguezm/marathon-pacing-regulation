@@ -1,10 +1,10 @@
-# Data provenance and reproducibility
+# Source data and analytical reproducibility
 
-This project analyzes public marathon results with cumulative split times at 5-km checkpoints. The analysis harmonizes Boston, Chicago, New York, and Berlin into a common schema with fields such as age, sex, year, city, cumulative split times, and net finishing time.
+The study uses official marathon timing information from Berlin, Boston, Chicago and New York City as represented in a harmonized research dataset. The tracked repository contains **aggregate result tables**, not raw individual-level marathon records or the complete data-to-estimate regression pipeline.
 
-## Source configuration used during development
+## Development-stage inputs
 
-The analysis workflow used the following sources/locations:
+The original data assembly referenced third-party public CSV exports:
 
 ```python
 urls = {
@@ -15,34 +15,26 @@ urls = {
 }
 ```
 
-Boston, Chicago, and New York were loaded from the public source above. Berlin was supplied separately during analysis and is therefore **not redistributed in this repository** until its provenance and redistribution terms are documented.
+The Boston, Chicago and New York locations are third-party processed exports, not direct official organizer endpoints. **Berlin was loaded from a separate local file, whose original provenance, extraction procedure and redistribution terms have not been fully recorded.** This should be resolved before describing all inputs as independently retrievable from the repository.
 
-## Harmonized schema
+## Harmonized variables
 
-The working dataset contains:
+`Name, Age, Sex, 5K, 10K, 15K, 20K, HALF, 25K, 30K, 35K, 40K, Finish Net, Year, City, Finish_hr`. Cumulative split fields were harmonized in seconds. The published analysis must not expose participant names.
 
-`Name, Age, Sex, 5K, 10K, 15K, 20K, HALF, 25K, 30K, 35K, 40K, Finish Net, Year, City, Finish_hr`
+## Primary quality-control specification
 
-Cumulative split fields are represented in seconds in the harmonized analysis table.
+- Age 15–80 years and finish time below 8 h.
+- Sex recorded as M/F in source tables.
+- Complete cumulative split times from 5 to 40 km in 5-km increments and strictly increasing times.
+- Each segment velocity within 1.5–7.5 m/s; adjacent velocity ratios within 0.55–1.55.
+- Development-stage stricter filters: 1.8–7.0 m/s and adjacent ratio 0.65–1.40.
 
-## Quality-control principles
+Reported retained records: 551,337 of 570,843 (96.6%). The input-level QC code and exclusion log are **not currently tracked**, so retention cannot be independently recomputed from this repository.
 
-Primary QC retained runners with plausible demographic and performance ranges and complete monotone 5-km checkpoints. The final mechanistic analysis used:
+## Frozen aggregate results
 
-- age 15–80 years;
-- finish time below 8 h;
-- sex coded M/F;
-- complete 5K through 40K cumulative checkpoints;
-- monotone cumulative times;
-- segment velocity 1.5–7.5 m/s;
-- adjacent segment-velocity ratio 0.55–1.55.
+`processed_results/` contains the summary CSVs used in the manuscript and figure-generation notebook. See repository [AUDIT.md](../AUDIT.md) for the itemized claims and known limitations.
 
-A tighter sensitivity filter used 1.8–7.0 m/s and adjacent ratio 0.65–1.40.
+## Privacy and access
 
-## Privacy and redistribution
-
-This repository is intended to contain only analysis code, aggregate outputs, and publication figures. Participant-level source data should only be redistributed when source terms explicitly permit it. Names and other directly identifying fields are not required by the analysis and should not be included in public releases.
-
-## Processed results
-
-`processed_results/` contains only aggregate statistical outputs needed to reproduce paper figures and tables. These are safe to publish with the manuscript repository.
+Do not upload participant-level tables or names without explicitly verifying source terms and privacy considerations. The current repository is private and does not offer public access to its notebooks or aggregate outputs. If public release is intended, review all data rights and notebook outputs before changing visibility.
