@@ -1,30 +1,34 @@
-# Python
+# Python and notebooks
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 .venv/
 venv/
 
-# OS/editor
+# OS and editors
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 
-# Raw or sensitive data
+# Participant-level and temporary data
 data/raw/
 data/interim/
 *.parquet
 *.feather
-
-# Large temporary exports
 *.zip
 *.tmp
+*.env
+.env*
 
-# Manuscript build artifacts
-paper/*.aux
-paper/*.bbl
-paper/*.blg
-paper/*.log
-paper/*.out
-paper/*.synctex.gz
+# Manuscript belongs in Overleaf, not in the public analysis repository
+paper/
+manuscript/
+supplementary/
+*.tex
+*.bib
+*.synctex.gz
+*.aux
+*.bbl
+*.blg
+*.log
