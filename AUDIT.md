@@ -39,3 +39,12 @@ Audit date: 2026-10-12. Examined supplied manuscript and the repository's tracke
 **Physiological mechanism or causality: not established.**
 
 The manuscript should be revised to remove claims exceeding these bounds or supplemented with additional analyses and archived code. No findings were recomputed from raw individual records in this audit.
+
+
+## October 2026 pre-publication archive preparation
+
+The associated manuscript has been **submitted** to *European Journal of Applied Physiology*; submission is not acceptance or publication. Manuscript and supplementary source files are maintained separately in Overleaf and are absent from the current `main` tree.
+
+`notebooks/05_temporal_normalization_validation.ipynb` contains an executed QC gate ending in `AssertionError`. Its captured run reported **572,004 source records** and **403,161 passing QC**, not the manuscript's 570,843 and 551,337. The mismatch must be reconciled before claiming end-to-end reproduction or reporting any temporal-normalization experiment as validated. The archived CSV summaries still match the reported main numerical estimates on cross-check; they do not establish independent recalculation from source records.
+
+Before changing repository visibility, re-check all tracked notebooks for participant identifiers, embedded input records, credentials, and third-party content, and review **Git history** separately: removing a manuscript from the current tree does not remove it from prior commits. This document is an explicit scope/limitations record, not a statement of journal endorsement.
