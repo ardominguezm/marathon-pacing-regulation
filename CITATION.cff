@@ -1,9 +1,9 @@
 cff-version: 1.2.0
-title: "Marathon Pacing Regulation"
-message: "If you use this repository, please cite the associated manuscript and this software repository."
+title: "Marathon Pacing Regulation: Analysis and Figure Code"
+message: "If you use this repository, please cite the software archive. The associated research manuscript was submitted to European Journal of Applied Physiology; publication details are not yet available."
 type: software
 authors:
-  - family-names: "Dominguez"
+  - family-names: "Domínguez-Monteroza"
     given-names: "Andy"
 repository-code: "https://github.com/ardominguezm/marathon-pacing-regulation"
 license: MIT
